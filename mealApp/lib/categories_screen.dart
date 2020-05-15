@@ -7,9 +7,20 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text('DesiKatta')),
+        title: const Text('DesiKatta'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.toc),
+            onPressed: null,
+          ),
+          IconButton(
+            icon: Icon(Icons.add_shopping_cart),
+            onPressed: null,
+          ),
+        ],
       ),
       body: GridView(
+        padding: EdgeInsets.all(25),
         children: DUMMY_CATEGORIES
             .map(
               (catData) => CategoryItem(
