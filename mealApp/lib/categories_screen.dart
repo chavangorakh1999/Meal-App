@@ -5,35 +5,45 @@ import 'package:mealApp/dummy_data.dart';
 class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('DesiKatta'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.toc),
-            onPressed: null,
-          ),
-          IconButton(
-            icon: Icon(Icons.add_shopping_cart),
-            onPressed: null,
-          ),
-        ],
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/bg.png"),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: GridView(
-        padding: EdgeInsets.all(25),
-        children: DUMMY_CATEGORIES
-            .map(
-              (catData) => CategoryItem(
-                catData.title,
-                catData.color,
-              ),
-            )
-            .toList(),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('DesiKatta'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.toc),
+              onPressed: null,
+            ),
+            IconButton(
+              icon: Icon(Icons.add_shopping_cart),
+              onPressed: null,
+            ),
+          ],
+        ),
+        backgroundColor: Colors.transparent,
+        body: GridView(
+          padding: EdgeInsets.all(25),
+          children: DUMMY_CATEGORIES
+              .map(
+                (catData) => CategoryItem(
+                  catData.title,
+                  catData.color,
+                ),
+              )
+              .toList(),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
         ),
       ),
     );
