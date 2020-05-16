@@ -5,28 +5,31 @@ import './category_meals_screen.dart';
 import 'package:flutter/cupertino.dart';
 import './models/category.dart';
 
-
 class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
   final String id;
 
-  CategoryItem(this.title, this.color,this.id);
+  CategoryItem(this.title, this.color, this.id);
 
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      Platform.isIOS
-          ? CupertinoPageRoute(
-              builder: (_) {
-                return CategoryMealsScreen(id,title);
-              },
-            )
-          : MaterialPageRoute(
-              builder: (_) {
-                return CategoryMealsScreen(id,title);
-              },
-            ),
-    );
+    Navigator.of(ctx).pushNamed('/category-meal', arguments: {
+      'id': id,
+      'title': title,
+    }
+        //
+        // Platform.isIOS
+        //     ? CupertinoPageRoute(
+        //         builder: (_) {
+        //           return CategoryMealsScreen(id,title);
+        //         },
+        //       )
+        //     : MaterialPageRoute(
+        //         builder: (_) {
+        //           return CategoryMealsScreen(id,title);
+        //         },
+        //       ),
+        );
   }
 
   @override
