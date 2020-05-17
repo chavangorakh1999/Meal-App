@@ -19,36 +19,34 @@ class CategoryScreen extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.toc),
-              onPressed: null,
+              onPressed: ()=>{},
+
             ),
             IconButton(
               icon: Icon(Icons.add_shopping_cart),
-              onPressed: null,
+              onPressed: ()=>{},
             ),
           ],
         ),
-        
         backgroundColor: Colors.transparent,
-        body: 
-        GridView(
-            padding: EdgeInsets.all(25),
-            children: DUMMY_CATEGORIES
-                .map(
-                  (catData) => CategoryItem(
-                    
-                    catData.title,
-                    catData.color,
-                    catData.id,
-                  ),
-                )
-                .toList(),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-            ),
+        body: GridView(
+          padding: EdgeInsets.all(25),
+          children: DUMMY_CATEGORIES
+              .map(
+                (catData) => CategoryItem(
+                  catData.title,
+                  catData.color,
+                  catData.id,
+                ),
+              )
+              .toList(),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
           ),
+        ),
       ),
     );
   }
