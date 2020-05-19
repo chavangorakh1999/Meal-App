@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mealApp/category_item.dart';
-import 'package:mealApp/dummy_data.dart';
+import '../widgets/category_item.dart';
+import '../dummy_data.dart';
 
 class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/bg.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           title: const Text('DesiKatta'),
           actions: <Widget>[
@@ -28,7 +20,7 @@ class CategoryScreen extends StatelessWidget {
             ),
           ],
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).canvasColor,
         body: GridView(
           padding: EdgeInsets.all(25),
           children: DUMMY_CATEGORIES
@@ -47,7 +39,6 @@ class CategoryScreen extends StatelessWidget {
             mainAxisSpacing: 20,
           ),
         ),
-      ),
     );
   }
 }
