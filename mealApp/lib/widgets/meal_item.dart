@@ -1,30 +1,45 @@
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
+import '../screens/meal_detail_screen.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  MealItem(
-      {@required this.affordability,
-      @required this.complexity,
-      @required this.duration,
-      @required this.imageUrl,
-      @required this.title});
-  void selectMeal() {}
+  MealItem({
+    @required this.id,
+    @required this.affordability,
+    @required this.complexity,
+    @required this.duration,
+    @required this.imageUrl,
+    @required this.title,
+  });
+  void selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    );
+  }
 
   String get complexityText {
     switch (complexity) {
       case Complexity.Challenging:
         return 'Challenging';
+        break;
       case Complexity.Hard:
         return 'Hard';
+        break;
       case Complexity.Simple:
         return 'Simple';
+        break;
+      default:
+        return 'Not Specified';
     }
   }
+
   String get affordabilityText {
     switch (affordability) {
       case Affordability.Affordable:
@@ -33,13 +48,15 @@ class MealItem extends StatelessWidget {
         return 'HLuxurious';
       case Affordability.Pricee:
         return 'Pricee';
+      default:
+        return 'Not Specified';
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -93,7 +110,6 @@ class MealItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                  
                   Row(
                     children: [
                       Icon(Icons.work),
