@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/filters_screen.dart';
 import './screens/tab_screen.dart';
 import './screens/meal_detail_screen.dart';
 import './screens/category_meals_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'DeliMeals',
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        accentColor: Color.fromRGBO(153,50,204, 1),
+        accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         iconTheme: IconThemeData(color: Colors.black),
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/':(ctx)=>TabScreen(),
-        CategoryMealsScreen.routeName:(ctx)=>CategoryMealsScreen(),
+        CategoryMealscreen.routeName:(ctx)=>CategoryMealscreen(),
         MealDetailScreen.routeName:(ctx)=>MealDetailScreen(),
+        FilterScreen.routeName:(ctx)=>FilterScreen(),
       },
       onGenerateRoute: (settings){
         print(settings.arguments);
