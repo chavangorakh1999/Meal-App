@@ -20,8 +20,13 @@ class _FilterScreenState extends State<FilterScreen> {
     bool currentValue,
     Function updateValue,
   ) {
-    
+    return SwitchListTile(
+        title: Text(title),
+        subtitle: Text('Include Gluten Free Meals'),
+        value: currentValue,
+        onChanged: updateValue);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,18 +44,59 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
             Expanded(
-                child: ListView(
-              children: <Widget>[
-                SwitchListTile(
-                    title: Text('Gluten Free'),
-                    subtitle: Text('Include Gluten Free Meals'),
-                    onChanged: (newValue) {
-                      setState(() {
-                        isGlutenFree = newValue;
-                      });
-                    })
-              ],
-            ))
+              child: ListView(
+                children: <Widget>[
+                  _buildSwitchTile(
+                    'Gluteen-Free',
+                    'Only include gluteen-free meal',
+                    isGlutenFree,
+                    (newValue) {
+                      setState(
+                        () {
+                          isGlutenFree = newValue;
+                        },
+                      );
+                    },
+                  ),
+                  _buildSwitchTile(
+                    'Luctose Free',
+                    'Only Lactose free meal',
+                    isLactoseFree,
+                    (newValue) {
+                      setState(
+                        () {
+                          isLactoseFree = newValue;
+                        },
+                      );
+                    },
+                  ),
+                  _buildSwitchTile(
+                    'VEGAN',
+                    'Only vegan meal',
+                    isVegan,
+                    (newValue) {
+                      setState(
+                        () {
+                          isVegan = newValue;
+                        },
+                      );
+                    },
+                  ),
+                  _buildSwitchTile(
+                    'Vegeterian',
+                    'Only Vegeterian',
+                    isVegetarian,
+                    (newValue) {
+                      setState(
+                        () {
+                          isVegetarian = newValue;
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
           ],
         ));
   }
